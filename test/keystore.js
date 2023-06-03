@@ -218,6 +218,34 @@ describe('Keystore', function () {
     });
   });
 
+  describe('addAddressFromPrivateKey', function () {
+    const N = fixtures.valid.length;
+
+    it('adds address to the vault from private key', function (done) {
+      this.timeout(10000);
+
+      const promArray = [];
+      fixtures.valid.forEach(function (fixture) {
+        promArray.push(createVaultProm({
+          password: fixture.password,
+          seedPhrase: fixture.mnSeed,
+          salt: fixture.salt,
+          hdPathString: fixture.hdPathString
+        }));
+      });
+
+      Promise.all(promArray).then(function (keystores) {
+        for (let i = 0; i < N; i++) {
+          const ks = keystores[i];
+          ks.addAddressFromPrivateKey(fixtures.valid[i].privKeyHex, Uint8Array.from(fixtures.valid[i].pwDerivedKey));
+          const addresses = ks.getAddresses();
+          const addr = addresses[addresses.length - 1];
+          expect(addr).to.equal(fixtures.valid[i].address);
+        }
+        done();
+      }).catch(done);
+    });
+  });
 
   describe('getAddresses', function () {
     it('returns the object\'s address attribute', function (done) {
