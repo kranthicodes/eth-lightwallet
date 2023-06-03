@@ -1,5 +1,5 @@
 {
-  "name": "eth-lightwallet",
+  "name": "@kranthicodes/eth-lightwallet",
   "version": "4.1.0",
   "description": "A lightweight ethereum javascript wallet.",
   "main": "index.js",
