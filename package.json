@@ -1,11 +1,11 @@
 {
   "name": "eth-lightwallet",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "A lightweight ethereum javascript wallet.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ConsenSys/eth-lightwallet.git"
+    "url": "https://github.com/kranthicodes/eth-lightwallet.git"
   },
   "scripts": {
     "build-js": "browserify index.js --s lightwallet -g [ babelify --presets [ @babel/preset-env @babel/preset-react ] ] | uglifyjs -c > dist/lightwallet.min.js",
@@ -22,6 +22,10 @@
     "wallet"
   ],
   "contributors": [
+    {
+      "name": "Sai Kranthi",
+      "email": "iamsaikranthi@gmail.com"
+    },
     {
       "name": "Christian Lundkvist",
       "email": "christian.lundkvist@gmail.com"
