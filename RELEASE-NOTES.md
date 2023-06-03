@@ -1,5 +1,10 @@
 # Release Notes #
 
+## Version 4.1.0 - 2023-06-03 ##
+
+* Updated bitcore-lib
+* Added support for importing account using a private key with test case
+
 ## Version 4.0.0 - 2019-03-26 ##
 
 * Major cleanup - backwards compatible!
