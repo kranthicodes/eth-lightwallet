@@ -260,6 +260,15 @@ KeyStore.prototype.generateNewAddress = function (pwDerivedKey, n) {
     this.addresses.push(address);
   }
 };
+KeyStore.prototype.addAddressFromPrivateKey = function (privateKey, pwDerivedKey) {
+  if (!this.encSeed) {
+    throw new Error('KeyStore.generateNewAddress: No seed set');
+  }
+  var encPrivateKey = KeyStore._encryptKey(privateKey, pwDerivedKey);
+  var address = KeyStore._computeAddressFromPrivKey(privateKey);
+  this.encPrivKeys[address] = encPrivateKey;
+  this.addresses.push(address);
+};
 KeyStore.prototype.keyFromPassword = function (password, callback) {
   KeyStore.deriveKeyFromPasswordAndSalt(password, this.salt, callback);
 };
